@@ -1310,6 +1310,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6058655189554157855, guid: ce44dcc29c7e70a43b37859f94f1cab1, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 354839368}
+    - target: {fileID: 6058655189554157855, guid: ce44dcc29c7e70a43b37859f94f1cab1, type: 3}
       propertyPath: m_InteractionLayers.m_Bits
       value: 2
       objectReference: {fileID: 0}
