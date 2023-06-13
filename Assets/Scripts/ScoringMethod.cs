@@ -14,7 +14,7 @@ public class ScoringMethod : MonoBehaviour
     public bool MultiplyPoints = false;
 
     //Combo Value
-    public int Combo;
+    public int Combo = 1;
 
     private void OnTriggerEnter(Collider other)
     {
