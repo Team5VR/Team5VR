@@ -14,17 +14,25 @@ public class TextOnOffScripts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartFunc();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            StartFunc();
+        }
     }
     private void StartFunc()
     {
         One.SetActive(true);
+        Two.SetActive(false);
+        Three.SetActive(false);
+        Four.SetActive(false);
+        Five.SetActive(false);
+        Six.SetActive(false);
         Invoke(nameof(OneFunc), delay);
     }
     private void OneFunc()
