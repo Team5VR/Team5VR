@@ -45,7 +45,7 @@ Material:
     - _ScrollSpeed: 1
     m_Colors:
     - _Emmision: {r: 0, g: 0.37712362, b: 1.0592737, a: 0}
-    - _Tiling: {r: 1.8, g: 2, b: 0, a: 0}
+    - _Tiling: {r: 100, g: 100, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4074037876434491984
 MonoBehaviour:

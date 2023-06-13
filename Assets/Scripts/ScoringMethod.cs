@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoringMethod : MonoBehaviour
 {
@@ -9,15 +10,20 @@ public class ScoringMethod : MonoBehaviour
     [Range(1,6)] 
     public int PointValue = 1;
 
-    // Current Score
-    public int CurrentScore = 0;
+    //Allowing For Multiplying Points 
+    public bool MultiplyPoints = false;
 
-    public void OnTriggerEnter(Collider other)
+    //Combo Value
+    public int Combo;
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
-        {
-            CurrentScore += PointValue;
-            Debug.Log("Score: " + CurrentScore);
-        }
+        {       
+            int multiplyValue = (MultiplyPoints ? 2 : 1);
+            
+            FindObjectOfType<GameManager>().CurrentScore += (PointValue * Combo * multiplyValue);
+            Debug.Log("Score: " + FindObjectOfType<GameManager>().CurrentScore);           
+        }       
     }
 }
