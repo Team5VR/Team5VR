@@ -278,6 +278,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ActivateGrab",
+                    "type": "Button",
+                    "id": "33ee208e-0367-4e40-b788-cabf3710b7ab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -456,6 +465,17 @@
                     "action": "Translate Anchor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "48cc4217-3489-4046-b7a8-c3f2b99eaff3",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "ActivateGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -987,7 +1007,7 @@
                 {
                     "name": "",
                     "id": "a88b0a8d-b464-4d96-bfb9-c08e67aa53ee",
-                    "path": "*/{PrimaryButton}",
+                    "path": "<XRController>{RightHand}/primaryButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller",
