@@ -5,8 +5,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
-    // Current Score
+    public GameObject m_sicknessWarning;
+    public GameObject m_surroundingsWarning;
+
+    public Transform m_startMenuPos;
+    public GameObject m_arcadeMenu;
+    public GameObject m_tutorialArea;
+    public BallPodium m_tutorialBall;
+        
     public int CurrentScore = 0;
+
+    void Start()
+    {
+
+    }
 
 }
