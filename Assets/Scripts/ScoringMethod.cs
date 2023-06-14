@@ -16,6 +16,9 @@ public class ScoringMethod : MonoBehaviour
     //Combo Value
     public int Combo = 1;
 
+    // Particles
+    public ParticleSystem GoalParticles;
+
     //Slight Pull Gravity
     public enum ForceType { Repulsion = -1, None = 0, Attraction = 1 }
     public ForceType m_Type;
@@ -29,9 +32,16 @@ public class ScoringMethod : MonoBehaviour
     {
         if (other.CompareTag("Ball"))
         {       
+            // If MultiplyValue is true double points
             int multiplyValue = (MultiplyPoints ? 2 : 1);
             
+            // Add Points to Game Manager
             FindObjectOfType<GameManager>().CurrentScore += (PointValue * Combo * multiplyValue);
+
+            //Play Particles
+            GoalParticles.Play();
+
+            //Delete Later
             Debug.Log("Score: " + FindObjectOfType<GameManager>().CurrentScore);           
         }       
     }
