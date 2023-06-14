@@ -17,7 +17,7 @@ public class ScoringMethod : MonoBehaviour
     public int Combo = 1;
 
     // Particles
-    public ParticleSystem GoalParticles;
+   // public ParticleSystem GoalParticles;
 
     //Slight Pull Gravity
     public enum ForceType { Repulsion = -1, None = 0, Attraction = 1 }
@@ -39,7 +39,7 @@ public class ScoringMethod : MonoBehaviour
             FindObjectOfType<GameManager>().CurrentScore += (PointValue * Combo * multiplyValue);
 
             //Play Particles
-            GoalParticles.Play();
+           // GoalParticles.Play();
 
             //Delete Later
             Debug.Log("Score: " + FindObjectOfType<GameManager>().CurrentScore);           
