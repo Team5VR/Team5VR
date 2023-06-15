@@ -34150,11 +34150,12 @@ MonoBehaviour:
   PointValue: 1
   MultiplyPoints: 0
   Combo: 1
+  GoalParticles: {fileID: 0}
   m_Type: 0
-  m_Pivot: {fileID: 0}
-  m_Radius: 0
-  m_StopRadius: 0
-  m_Force: 0
+  m_Pivot: {fileID: 5390341590230322124}
+  m_Radius: 3
+  m_StopRadius: 1
+  m_Force: 4
   m_Layers:
     serializedVersion: 2
     m_Bits: 0
