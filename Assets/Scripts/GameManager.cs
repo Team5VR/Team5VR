@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
- 
+using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,13 +15,10 @@ public class GameManager : MonoBehaviour
     public BallPodium m_tutorialBall;
     public List<GameObject> m_tutorialPages;
 
+    public UnityAction<XRBaseInteractor> tes;
 
     
     public int CurrentScore = 0;
 
-    void Start()
-    {
-
-    }
-
+    
 }
