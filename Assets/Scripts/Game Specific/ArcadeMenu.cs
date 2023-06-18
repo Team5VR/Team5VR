@@ -6,14 +6,13 @@ using UnityEngine.XR.Content.Interaction;
 public class ArcadeMenu : MonoBehaviour
 {
     [SerializeField]
-    List<Button> m_ArcadeButtons;    
-
+    List<Button> m_ArcadeButtons;
     bool m_change = true;
     int m_currentButton = 0;
-    // Start is called before the first frame update
+    
     void Start()
     {
-        m_ArcadeButtons[0].Select();
+        m_ArcadeButtons[0].Select();       
     }        
 
     public void SwitchButtons(float value)
@@ -38,8 +37,8 @@ public class ArcadeMenu : MonoBehaviour
         }
     }
 
-    public void QuitGame()
+    public void PushArcadeButton()
     {
-        Application.Quit();
+        m_ArcadeButtons[m_currentButton].onClick.Invoke();
     }
 }

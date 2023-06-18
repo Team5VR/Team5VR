@@ -10,14 +10,10 @@ public class ScoringMethod : MonoBehaviour
     [Range(1,6)] 
     public int PointValue = 1;
 
-    //Allowing For Multiplying Points 
-    public bool MultiplyPoints = false;
+    public bool m_isTutorialHoop;
 
-    //Combo Value
-    public int Combo = 1;
-
-    // Particles
-   // public ParticleSystem GoalParticles;
+    //Particles
+    //public ParticleSystem GoalParticles;
 
     //Slight Pull Gravity
     public enum ForceType { Repulsion = -1, None = 0, Attraction = 1 }
@@ -31,18 +27,15 @@ public class ScoringMethod : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
-        {       
-            // If MultiplyValue is true double points
-            int multiplyValue = (MultiplyPoints ? 2 : 1);
-            
-            // Add Points to Game Manager
-            FindObjectOfType<GameManager>().CurrentScore += (PointValue * Combo * multiplyValue);
+        {
+            if (!m_isTutorialHoop)
+            {
+                // Add Points to Game Manager
+                FindObjectOfType<GameManager>().UpdateScores(PointValue);
+            }
 
             //Play Particles
-           // GoalParticles.Play();
-
-            //Delete Later
-            Debug.Log("Score: " + FindObjectOfType<GameManager>().CurrentScore);           
+           // GoalParticles.Play();                
         }       
     }
     private void FixedUpdate()
