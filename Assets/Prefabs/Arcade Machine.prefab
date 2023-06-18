@@ -579,7 +579,7 @@ MonoBehaviour:
   m_ArcadeButtons:
   - {fileID: 7067047134617786693}
   - {fileID: 7067047135003593048}
-  - {fileID: 0}
+  - {fileID: 7067047134259098558}
   - {fileID: 7067047134259098558}
 --- !u!1 &7067047134812660845
 GameObject:
