@@ -7,14 +7,11 @@ public class BigBlackHole : MonoBehaviour
     //Particles
     //public ParticleSystem GoalParticles;
 
-    //Slight Pull Gravity
-    public enum ForceType { Repulsion = -1, None = 0, Attraction = 1 }
-    public ForceType m_Type;
-    public Transform m_Pivot;
-    public float m_Radius;
-    public float m_StopRadius;
-    public float m_Force;
-    public LayerMask m_Layers;
+    //Slight Pull Gravity    
+    public Transform m_pivot;
+    public float m_radius;
+    public float m_force;
+    LayerMask m_layer;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,9 +20,7 @@ public class BigBlackHole : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Collider[] colliders = Physics.OverlapSphere(m_Pivot.position, m_Radius, m_Layers);
-
-        float signal = (float)m_Type;
+        Collider[] colliders = Physics.OverlapSphere(m_pivot.position, m_radius, m_layer);
 
         foreach (var collider in colliders)
         {
@@ -33,18 +28,15 @@ public class BigBlackHole : MonoBehaviour
             if (body == null)
                 continue;
 
-            Vector3 direction = m_Pivot.position - body.position;
+            Vector3 direction = m_pivot.position - body.position;
 
             float distance = direction.magnitude;
 
-            direction = direction.normalized;
+            direction = direction.normalized;            
 
-            if (distance < m_StopRadius)
-                continue;
+            float forceRate = (m_force / distance);
 
-            float forceRate = (m_Force / distance);
-
-            body.AddForce(direction * (forceRate / body.mass) * signal);
+            body.AddForce(direction * forceRate);
         }
     }
 }

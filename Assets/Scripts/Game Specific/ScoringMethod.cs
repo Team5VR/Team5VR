@@ -32,7 +32,7 @@ public class ScoringMethod : MonoBehaviour
             {
                 // Add Points to Game Manager
                 FindObjectOfType<GameManager>().UpdateScores(PointValue);
-                other.gameObject.layer = LayerMask.GetMask("DeadBall");
+                other.gameObject.layer = LayerMask.NameToLayer("DeadBall");
             }
 
             //Play Particles

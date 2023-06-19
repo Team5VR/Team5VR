@@ -3,21 +3,25 @@ using UnityEngine;
 public class BallPodium : MonoBehaviour
 {
     [SerializeField]
-    GameObject m_ball;
-    [SerializeField]
+    GameObject m_ball;    
     Transform m_despawnPoint;
     Vector3 m_ballStart;
 
     private void Start()
     {
         m_ballStart = m_ball.transform.position;
+        m_despawnPoint = FindObjectOfType<BigBlackHole>().transform;
     }
     private void Update()
     {
         if(m_ball.transform.position.y <= m_despawnPoint.position.y)
         {
+            m_ball.GetComponent<Rigidbody>().isKinematic = true;
+            m_ball.GetComponent<TrailRenderer>().enabled = false;
             m_ball.transform.SetPositionAndRotation(m_ballStart, m_ball.transform.rotation);
-            m_ball.layer = LayerMask.GetMask("Ball");
+            m_ball.layer = LayerMask.NameToLayer("Ball");
+            m_ball.GetComponent<TrailRenderer>().enabled = true;
+            m_ball.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 }
