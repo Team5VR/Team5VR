@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
         m_grandstand.SetActive(true);
         m_player.transform.SetPositionAndRotation(m_gameSpawn.position, m_gameSpawn.rotation);
         m_currentScore = 0;
+        m_timeRemaining = m_roundTimeAmount;
         StartCoroutine(UpdateTimer());
     }
 
