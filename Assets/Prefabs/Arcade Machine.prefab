@@ -591,6 +591,8 @@ MonoBehaviour:
   - {fileID: 7067047135003593048}
   - {fileID: 7067047134259098558}
   - {fileID: 7067047134259098558}
+  m_leftHand: {fileID: 0}
+  m_rightHand: {fileID: 0}
 --- !u!1 &7067047135003593049
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,6 +977,30 @@ PrefabInstance:
     - target: {fileID: 209068324170568505, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216814198869864760, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
+      propertyPath: m_OnValueChangeX.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216814198869864760, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
+      propertyPath: m_OnValueChangeX.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2533993416633348381}
+    - target: {fileID: 2216814198869864760, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
+      propertyPath: m_OnValueChangeX.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216814198869864760, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
+      propertyPath: m_OnValueChangeX.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchButtons
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216814198869864760, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
+      propertyPath: m_OnValueChangeX.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ArcadeMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216814198869864760, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
+      propertyPath: m_OnValueChangeX.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5162356030215288089, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
       propertyPath: m_Name
