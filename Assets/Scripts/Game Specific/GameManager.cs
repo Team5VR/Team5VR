@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
             {
                 float minutes = Mathf.FloorToInt(m_timeRemaining / 60);
                 float seconds = Mathf.FloorToInt(m_timeRemaining % 60);
-                t.text = string.Format("{0:00}:{z:00}", minutes, seconds);
+                t.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
                 m_timeRemaining -= Time.deltaTime;
             yield return null;
@@ -135,9 +135,12 @@ public class GameManager : MonoBehaviour
         m_timeRemaining = 0;
         foreach (TextMeshProUGUI t in m_timers)
         {
-            t.text = $"{m_timeRemaining / 60:00}:{m_timeRemaining % 60:00}";
+            float minutes = Mathf.FloorToInt(m_timeRemaining / 60);
+            float seconds = Mathf.FloorToInt(m_timeRemaining % 60);
+            t.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         m_player.transform.SetPositionAndRotation(m_resetSpawn.position, m_resetSpawn.rotation);
+        
     }
 
     public void Tutorial()
@@ -152,6 +155,10 @@ public class GameManager : MonoBehaviour
         if(m_currentPage >m_tutorialPages.Count)
         {
             StartGame();
+        }
+        else if(m_currentPage == 1)
+        {
+            m_backButton.gameObject.SetActive(false);
         }
         else 
         {
