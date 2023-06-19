@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         m_sicknessWarning.SetActive(false);
         yield return new WaitForSeconds(m_surroundingsTime);
         m_surroundingsWarning.SetActive(false);        
-        m_surroundingsWarning.GetComponentInParent<Canvas>().enabled = false;
+        //m_surroundingsWarning.GetComponentInParent<Canvas>().enabled = false;
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = true;
         m_player.GetComponent<TeleportationProvider>().enabled = true;
     }
