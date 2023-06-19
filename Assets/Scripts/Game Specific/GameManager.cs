@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         m_sicknessWarning.SetActive(false);
         yield return new WaitForSeconds(m_surroundingsTime);
         m_surroundingsWarning.SetActive(false);        
-        m_surroundingsWarning.GetComponentInParent<Canvas>().enabled = false;
+        //m_surroundingsWarning.GetComponentInParent<Canvas>().enabled = false;
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = true;
         m_player.GetComponent<TeleportationProvider>().enabled = true;
     }
@@ -111,7 +111,9 @@ public class GameManager : MonoBehaviour
         {
             foreach(TextMeshProUGUI t in m_timers)
             {
-                t.text = $"{m_timeRemaining / 60:00}:{m_timeRemaining % 60:00}";
+                float minutes = Mathf.FloorToInt(m_timeRemaining / 60);
+                float seconds = Mathf.FloorToInt(m_timeRemaining % 60);
+                t.text = string.Format("{0:00}:{z:00}", minutes, seconds);
             }
                 m_timeRemaining -= Time.deltaTime;
             yield return null;
