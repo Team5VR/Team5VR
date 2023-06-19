@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Button m_nextButton;
 
-    
+
     int m_currentScore = 0;
     [SerializeField]
     float m_multiplyerDistance = 12.5f;
@@ -66,12 +66,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Warnings());
     }
 
-    IEnumerator Warnings() 
+    IEnumerator Warnings()
     {
         yield return new WaitForSeconds(m_sicknessTime);
         m_sicknessWarning.SetActive(false);
         yield return new WaitForSeconds(m_surroundingsTime);
-        m_surroundingsWarning.SetActive(false);        
+        m_surroundingsWarning.SetActive(false);
         //m_surroundingsWarning.GetComponentInParent<Canvas>().enabled = false;
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = true;
         m_player.GetComponent<TeleportationProvider>().enabled = true;
@@ -85,13 +85,17 @@ public class GameManager : MonoBehaviour
         m_grandstand.SetActive(true);
         m_player.transform.SetPositionAndRotation(m_gameSpawn.position, m_gameSpawn.rotation);
         m_currentScore = 0;
+        foreach (TextMeshProUGUI s in m_scoreboards)
+        {
+            s.text = m_currentScore.ToString();
+        }
         m_timeRemaining = m_roundTimeAmount;
         StartCoroutine(UpdateTimer());
     }
 
     public void UpdateScores(int add)
     {
-        if (Vector3.Distance(Vector3.zero, FindObjectOfType<XROrigin>().gameObject.transform.position)>m_multiplyerDistance)
+        if (Vector3.Distance(Vector3.zero, FindObjectOfType<XROrigin>().gameObject.transform.position) > m_multiplyerDistance)
         {
             m_currentScore += (add * 2);
         }
@@ -99,7 +103,7 @@ public class GameManager : MonoBehaviour
         {
             m_currentScore += add;
         }
-        foreach(TextMeshProUGUI s in m_scoreboards)
+        foreach (TextMeshProUGUI s in m_scoreboards)
         {
             s.text = m_currentScore.ToString();
         }
@@ -107,15 +111,15 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UpdateTimer()
     {
-        while(m_timeRemaining >= 0)
+        while (m_timeRemaining >= 0)
         {
-            foreach(TextMeshProUGUI t in m_timers)
+            foreach (TextMeshProUGUI t in m_timers)
             {
                 float minutes = Mathf.FloorToInt(m_timeRemaining / 60);
                 float seconds = Mathf.FloorToInt(m_timeRemaining % 60);
                 t.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
-                m_timeRemaining -= Time.deltaTime;
+            m_timeRemaining -= Time.deltaTime;
             yield return null;
         }
         RoundEnd();
@@ -126,9 +130,9 @@ public class GameManager : MonoBehaviour
         m_startArea.SetActive(true);
         m_grandstand.SetActive(false);
         m_arcadeMenu.SetActive(true);
-        m_tutorialObjects.SetActive(false);        
+        m_tutorialObjects.SetActive(false);
         m_endScoreboard.SetActive(true);
-        foreach(TextMeshProUGUI t in m_scoreboards)
+        foreach (TextMeshProUGUI t in m_scoreboards)
         {
             t.text = m_currentScore.ToString();
         }
@@ -140,7 +144,7 @@ public class GameManager : MonoBehaviour
             t.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         m_player.transform.SetPositionAndRotation(m_resetSpawn.position, m_resetSpawn.rotation);
-        
+
     }
 
     public void Tutorial()
@@ -151,25 +155,26 @@ public class GameManager : MonoBehaviour
     }
     public void TutorialNext()
     {
-        m_currentPage++;
-        if(m_currentPage >m_tutorialPages.Count)
-        {
-            StartGame();
-        }
-        else if(m_currentPage == 1)
-        {
-            m_backButton.gameObject.SetActive(false);
-        }
-        else 
-        {
-            if(m_currentPage == m_tutorialPages.Count)
-            {
-                m_nextButton.GetComponent<TextMeshProUGUI>().text = "Start Game";
-            }
-            m_backButton.gameObject.SetActive(true);
+        m_currentPage++;        
+        if (m_currentPage == m_tutorialPages.Count)
+        {            
             m_tutorialPages[m_currentPage-1].gameObject.SetActive(false);
-            m_tutorialPages[m_currentPage].gameObject.SetActive(true);
+            m_tutorialPages[0].gameObject.SetActive(true);
+            m_currentPage = 0;
+            StartGame();
+            return;
         }
+        else if (m_currentPage == 1)
+        {
+            m_backButton.gameObject.SetActive(true);
+        }
+        else if (m_currentPage == m_tutorialPages.Count - 1)
+        {
+            m_nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start Game";
+        }
+        m_tutorialPages[m_currentPage - 1].gameObject.SetActive(false);
+        m_tutorialPages[m_currentPage].gameObject.SetActive(true);
+
     }
     public void TutorialBack()
     {
@@ -178,15 +183,13 @@ public class GameManager : MonoBehaviour
         {
             m_backButton.gameObject.SetActive(false);
         }
-        else
+        else if (m_currentPage == m_tutorialPages.Count - 1)
         {
-            if(m_currentPage == m_tutorialPages.Count - 1)
-            {
-                m_nextButton.GetComponent<TextMeshProUGUI>().text = "Next";
-            }
-            m_tutorialPages[m_currentPage + 1].gameObject.SetActive(false);
-            m_tutorialPages[m_currentPage].gameObject.SetActive(true);
+            m_nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "Next";
         }
+        m_tutorialPages[m_currentPage + 1].gameObject.SetActive(false);
+        m_tutorialPages[m_currentPage].gameObject.SetActive(true);
+
     }
     public void QuitGame()
     {

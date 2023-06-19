@@ -28,8 +28,11 @@ public class ArcadeMenu : MonoBehaviour
 
     private void OnDisable()
     {
-        m_leftHand.SetActive(false);
-        m_rightHand.SetActive(false);
+        if (m_leftHand != null)
+        {
+            m_leftHand.SetActive(false);
+            m_rightHand.SetActive(false);
+        }
     }
 
     public void SwitchButtons(float value)
