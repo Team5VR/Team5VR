@@ -111,7 +111,9 @@ public class GameManager : MonoBehaviour
         {
             foreach(TextMeshProUGUI t in m_timers)
             {
-                t.text = $"{m_timeRemaining / 60:00}:{m_timeRemaining % 60:00}";
+                float minutes = Mathf.FloorToInt(timeToDisplay / 60);
+                float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+                t.text = string.Format("{0:00}:{z:00}", minutes, seconds);
             }
                 m_timeRemaining -= Time.deltaTime;
             yield return null;
