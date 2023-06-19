@@ -494,7 +494,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_JoystickMotion: 0
+  m_JoystickMotion: 2
   m_Handle: {fileID: 3727157433553910907}
   m_Value: {x: 0, y: 0}
   m_RecenterOnRelease: 1
@@ -649,27 +649,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6fcafdea28889ab4db8d8d134ecb7b9c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab4f98bb2ea0c6045b7be137e9f62b57, type: 3}
---- !u!1 &730693264479741426 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -115397445859483977, guid: ab4f98bb2ea0c6045b7be137e9f62b57, type: 3}
-  m_PrefabInstance: {fileID: 8378374284562348869}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &369216224297960511
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730693264479741426}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!23 &2812322719332971233 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5999524339496585636, guid: ab4f98bb2ea0c6045b7be137e9f62b57, type: 3}

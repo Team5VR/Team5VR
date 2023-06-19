@@ -287,6 +287,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PointActivate",
+                    "type": "Button",
+                    "id": "7fb0d70e-43a7-432f-91fa-1f07f42f2abc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -474,6 +483,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "ActivateGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86c047c2-2845-4102-9866-fc275e094864",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PointActivate",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -825,6 +845,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ActivatePointer",
+                    "type": "Button",
+                    "id": "9ef88461-92eb-4059-a5ca-35b8e14f8291",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1012,6 +1041,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "ActivateGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0696e00d-52e0-46de-ae9e-093ff98cb11e",
+                    "path": "<XRController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivatePointer",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

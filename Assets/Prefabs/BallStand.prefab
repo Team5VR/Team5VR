@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1103570163125668464}
+  - component: {fileID: 626461295967185683}
   m_Layer: 0
   m_Name: BallStand
   m_TagString: Untagged
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626461295967185683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546875865658435434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6022d5bbe73ce1d43922b7731cdc2497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ball: {fileID: 1888816726226722661}
 --- !u!1 &8959041956636868028
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,5 +204,10 @@ PrefabInstance:
 --- !u!4 &1888816726226722659 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6512913461667658633, guid: 49c25708108424947a873cbb40f30d06, type: 3}
+  m_PrefabInstance: {fileID: 4635585584247612650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1888816726226722661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6512913461667658639, guid: 49c25708108424947a873cbb40f30d06, type: 3}
   m_PrefabInstance: {fileID: 4635585584247612650}
   m_PrefabAsset: {fileID: 0}

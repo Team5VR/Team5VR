@@ -9,11 +9,31 @@ public class ArcadeMenu : MonoBehaviour
     List<Button> m_ArcadeButtons;
     bool m_change = true;
     int m_currentButton = 0;
-    
+    [SerializeField]
+    GameObject m_leftHand;
+    [SerializeField]
+    GameObject m_rightHand;
+
     void Start()
     {
         m_ArcadeButtons[0].Select();       
-    }        
+    }
+
+    private void OnEnable()
+    {
+        m_ArcadeButtons[0].Select();
+        m_leftHand.SetActive(true);
+        m_rightHand.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        if (m_leftHand != null)
+        {
+            m_leftHand.SetActive(false);
+            m_rightHand.SetActive(false);
+        }
+    }
 
     public void SwitchButtons(float value)
     {        
