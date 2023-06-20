@@ -14,7 +14,7 @@ public class BallPodium : MonoBehaviour
     }
     private void Update()
     {
-        if(m_ball.transform.position.y <= m_despawnPoint.position.y)
+        if(m_ball.transform.position.y <= m_despawnPoint.position.y - 20 || Vector3.Distance(m_ball.transform.position, m_despawnPoint.position) <= 0.01f)
         {
             m_ball.GetComponent<Rigidbody>().isKinematic = true;
             m_ball.GetComponent<TrailRenderer>().enabled = false;

@@ -31,8 +31,8 @@ public class ScoringMethod : MonoBehaviour
             if (!m_isTutorialHoop)
             {
                 // Add Points to Game Manager
-                FindObjectOfType<GameManager>().UpdateScores(PointValue);
-                other.gameObject.layer = LayerMask.NameToLayer("DeadBall");
+                FindObjectOfType<GameManager>().UpdateScores(PointValue);                
+                StartCoroutine(FindObjectOfType<BigBlackHole>().PullBall(other.gameObject));
             }
 
             //Play Particles
