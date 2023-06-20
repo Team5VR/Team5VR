@@ -11,7 +11,7 @@ public class BigBlackHole : MonoBehaviour
     Transform m_centrePoint;
     public float m_radius;
     public float m_force;    
-
+    public float m_velocityPercentage;
     void Start()
     {
         m_centrePoint = this.transform;
@@ -24,9 +24,8 @@ public class BigBlackHole : MonoBehaviour
     }
     public IEnumerator PullBall(GameObject deadBall)
     {        
-        float distance = 2;
-        deadBall.GetComponent<Rigidbody>().useGravity = false;
-        deadBall.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        float distance = 2;        
+        deadBall.GetComponent<Rigidbody>().velocity = deadBall.GetComponent<Rigidbody>().velocity * m_velocityPercentage;
         while(distance > 1)
         {
             Vector3 direction = m_centrePoint.position - deadBall.transform.position;
