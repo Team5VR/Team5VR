@@ -1267,28 +1267,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a4888b92-883c-4afd-a53b-04c255bff3d4",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "07d75d1b-fd7c-4e96-8434-b088d8749a80",
-                    "path": "<Pen>/tip",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a6e5ccac-edc7-447a-a516-3c07f8495fbe",
                     "path": "<Mouse>/scroll",
                     "interactions": "",
@@ -1586,34 +1564,12 @@
                 },
                 {
                     "name": "",
-                    "id": "7ebd224b-a45c-43c7-ad90-060d310aa2dc",
-                    "path": "*/{Submit}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Submit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "95bd15c7-8dbe-4781-b6ed-d54720ae8d9b",
                     "path": "*/{Cancel}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Cancel",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f8c01352-665e-4307-b0fc-1b18376bcae6",
-                    "path": "<Touchscreen>/touch*/click",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

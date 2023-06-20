@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -71,14 +72,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(m_sicknessTime);
         m_sicknessWarning.SetActive(false);
         yield return new WaitForSeconds(m_surroundingsTime);
-        m_surroundingsWarning.SetActive(false);
-        //m_surroundingsWarning.GetComponentInParent<Canvas>().enabled = false;
+        m_surroundingsWarning.SetActive(false);        
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = true;
         m_player.GetComponent<TeleportationProvider>().enabled = true;
     }
 
     public void StartGame()
     {
+        FindObjectOfType<EventSystem>().enabled = false;
         m_tutorialObjects.SetActive(false);
         m_arcadeMenu.SetActive(false);
         m_startArea.SetActive(false);
@@ -151,7 +152,7 @@ public class GameManager : MonoBehaviour
     {
         m_endScoreboard.SetActive(false);
         m_arcadeMenu.SetActive(false);
-        m_tutorialObjects.SetActive(true);
+        m_tutorialObjects.SetActive(true);        
     }
     public void TutorialNext()
     {
