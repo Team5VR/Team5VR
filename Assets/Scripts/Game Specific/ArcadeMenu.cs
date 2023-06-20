@@ -14,9 +14,16 @@ public class ArcadeMenu : MonoBehaviour
     [SerializeField]
     GameObject m_rightHand;
 
+    GameObject m_mainPanel;
+    GameObject m_creditsPanel;
+    GameObject m_highscorePanel;
+
     void Start()
     {
-        m_ArcadeButtons[0].Select();       
+        m_ArcadeButtons[0].Select();
+        m_mainPanel = GameObject.Find("arcadeMain");
+        m_creditsPanel = GameObject.Find("arcadeCredits");
+        m_highscorePanel = GameObject.Find("arcadeHighscore");
     }
 
     private void OnEnable()
@@ -26,11 +33,11 @@ public class ArcadeMenu : MonoBehaviour
         m_rightHand.SetActive(true);
     }
 
-    private void OnDisable()
+    private void OnDisable() //hi harley
     {
-        if (m_leftHand != null)
+        if (m_leftHand != null)//how ya doin
         {
-            m_leftHand.SetActive(false);
+            m_leftHand.SetActive(false);//<3 harry
             m_rightHand.SetActive(false);
         }
     }
@@ -60,5 +67,16 @@ public class ArcadeMenu : MonoBehaviour
     public void PushArcadeButton()
     {
         m_ArcadeButtons[m_currentButton].onClick.Invoke();
+    }
+
+    public void Credits()
+    {
+        m_mainPanel.SetActive(false);
+        m_creditsPanel.SetActive(false);
+    }
+
+    public void HighScore()
+    {
+
     }
 }
