@@ -14,7 +14,7 @@ Material:
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3004
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -38,14 +38,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Fernel: 1.5
+    - _AlphaMult: 0.18
+    - _Fernel: 0.4
     - _Offset: 1
     - _QueueControl: 0
-    - _QueueOffset: 0
-    - _ScrollSpeed: 1
+    - _QueueOffset: 4
+    - _ScrollSpeed: 0.22
     m_Colors:
-    - _Emmision: {r: 0, g: 0.37712362, b: 1.0592737, a: 0}
-    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Emmision: {r: 0, g: 0.18919206, b: 1.4962194, a: 0}
+    - _Tiling: {r: 7, g: 7, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &4074037876434491984
 MonoBehaviour:
