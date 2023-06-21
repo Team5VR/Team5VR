@@ -23,22 +23,24 @@ public class BigBlackHole : MonoBehaviour
         // GoalParticles.Play();                
     }
     public IEnumerator PullBall(GameObject deadBall)
-    {        
+    {
+        deadBall.tag = "DeadBall";
         float distance = 2;        
         deadBall.GetComponent<Rigidbody>().velocity = deadBall.GetComponent<Rigidbody>().velocity * m_velocityPercentage;
-        while(distance > 1)
+        while (distance > 0.01f)
         {
             Vector3 direction = m_centrePoint.position - deadBall.transform.position;
-            
+
             distance = Vector3.Distance(deadBall.transform.position, m_centrePoint.position);
 
-            direction = direction.normalized;            
+            direction = direction.normalized;
 
             float forceRate = (m_force / distance);
 
             deadBall.GetComponent<Rigidbody>().AddForce(direction * forceRate);
 
             yield return null;
-        }        
+        }
+        deadBall.tag = "Ball";
     }
 }
