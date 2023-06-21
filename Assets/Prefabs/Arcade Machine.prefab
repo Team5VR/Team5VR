@@ -3237,6 +3237,14 @@ PrefabInstance:
       propertyPath: m_OnValueChangeX.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3727157433553910907, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727157433553910907, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5162356030215288089, guid: 7adc3a35be6e68e40a6efa53abfad1da, type: 3}
       propertyPath: m_Name
       value: Joystick
