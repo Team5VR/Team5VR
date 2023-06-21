@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3559846984014091463}
-  - component: {fileID: 3559846984014091456}
   m_Layer: 0
   m_Name: Basketball
   m_TagString: Untagged
@@ -33,15 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!45 &3559846984014091456
-Skybox:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3559846984014091457}
-  m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 08f461c1b1ab0d145b84dcf4008adacf, type: 2}
 --- !u!1001 &8596445158068095728
 PrefabInstance:
   m_ObjectHideFlags: 0
