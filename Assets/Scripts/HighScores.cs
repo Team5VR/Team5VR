@@ -5,134 +5,41 @@ using System.Linq;
 using UnityEngine;
 
 public class HighScores : MonoBehaviour
-{    
-    [SerializeField] string filename;
+{
+    public ToSaveStuff scores;
 
-    List<NewHighScore> entries = new List<NewHighScore>();
+    string path = "Assets/Resources/highScore.txt";
+    string JSONString;
+    TextAsset textFile;   
 
     private void Start()
     {
-        entries = FileHandler.ReadListFromJSON<NewHighScore>(filename);
-    }
-
-    public void AddNameToList(int score)
-    {
-        entries.Add(new NewHighScore(score));
-
-        FileHandler.SaveToJSON<NewHighScore>(entries, filename); ;
-    }
-}
-
-[Serializable]
-public class NewHighScore
-{
-    public int points;
-
-    public NewHighScore(int amount)
-    {
-        points = amount;
-    }
-}
-
-public static class FileHandler
-{
-    public static void SaveToJSON<T>(List<T> toSave, string filename)
-    {
-        Debug.Log(GetPath(filename));
-        string content = JsonHelper.ToJson<T>(toSave.ToArray());
-        WriteFile(GetPath(filename), content);
-    }
-
-    public static void SaveToJSON<T>(T toSave, string filename)
-    {
-        string content = JsonUtility.ToJson(toSave);
-        WriteFile(GetPath(filename), content);
-    }
-
-    public static List<T> ReadListFromJSON<T>(string filename)
-    {
-        string content = ReadFile(GetPath(filename));
-
-        if (string.IsNullOrEmpty(content) || content == "{}")
+        if (!File.Exists(path))
         {
-            return new List<T>();
-        }
-
-        List<T> res = JsonHelper.FromJson<T>(content).ToList();
-
-        return res;
-
-    }
-
-    public static T ReadFromJSON<T>(string filename)
-    {
-        string content = ReadFile(GetPath(filename));
-
-        if (string.IsNullOrEmpty(content) || content == "{}")
-        {
-            return default(T);
-        }
-
-        T res = JsonUtility.FromJson<T>(content);
-
-        return res;
-
-    }
-
-    private static string GetPath(string filename)
-    {
-        return Application.persistentDataPath + "/" + filename;
-    }
-
-    private static void WriteFile(string path, string content)
-    {
-        FileStream fileStream = new FileStream(path, FileMode.Create);
-
-        using (StreamWriter writer = new StreamWriter(fileStream))
-        {
-            writer.Write(content);
-        }
-    }
-
-    private static string ReadFile(string path)
-    {
-        if (File.Exists(path))
-        {
-            using (StreamReader reader = new StreamReader(path))
+            int[] scoresNums = new int[5];
+            for (int i = 0; i < scoresNums.Length; i++)
             {
-                string content = reader.ReadToEnd();
-                return content;
+                scoresNums[i] = i;
             }
+            scores = new ToSaveStuff(scoresNums);
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine(JSONString);
+            }
+            JSONString = JsonUtility.ToJson(scores);
         }
-        return "";
-    }
+        else
+        {
+            textFile = Resources.Load("highScore") as TextAsset;
+            scores = JsonUtility.FromJson<ToSaveStuff>(textFile.text);
+        }
+    }    
 }
 
-public static class JsonHelper
+[System.Serializable]
+public class ToSaveStuff
 {
-    public static T[] FromJson<T>(string json)
-    {
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(json);
-        return wrapper.Items;
-    }
-
-    public static string ToJson<T>(T[] array)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper);
-    }
-
-    public static string ToJson<T>(T[] array, bool prettyPrint)
-    {
-        Wrapper<T> wrapper = new Wrapper<T>();
-        wrapper.Items = array;
-        return JsonUtility.ToJson(wrapper, prettyPrint);
-    }
-
-    [Serializable]
-    private class Wrapper<T>
-    {
-        public T[] Items;
-    }
+    public int[] scores;
+    public ToSaveStuff(int[] newScore) { scores = newScore; }
+    public ToSaveStuff() { scores = new int[5]; }
 }
