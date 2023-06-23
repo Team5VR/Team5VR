@@ -15,6 +15,10 @@ public class ScoringMethod : MonoBehaviour
     //Particles
     //public ParticleSystem GoalParticles;
 
+    //Target Audio
+    public AudioSource scoringAudioSource;
+    public AudioClip scoringAudioClip;
+
     //Slight Pull Gravity
     public enum ForceType { Repulsion = -1, None = 0, Attraction = 1 }
     public ForceType m_Type;
@@ -36,7 +40,10 @@ public class ScoringMethod : MonoBehaviour
             }
 
             //Play Particles
-           // GoalParticles.Play();                
+            // GoalParticles.Play();
+
+            //Play Scoring Audio
+            //scoringAudioSource.PlayOneShot(scoringAudioClip);
         }       
     }
     private void FixedUpdate()
