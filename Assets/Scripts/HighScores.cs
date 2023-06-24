@@ -25,16 +25,36 @@ public class HighScores : MonoBehaviour
             using (StreamWriter sw = File.CreateText(path))
             {
                 sw.WriteLine(JSONString);
-            }
-            JSONString = JsonUtility.ToJson(scores);
+            }            
         }
         else
         {
             textFile = Resources.Load("highScore") as TextAsset;
             scores = JsonUtility.FromJson<ToSaveStuff>(textFile.text);
+            Array.Sort(scores.scores);
         }
     }    
+    public void SaveScores()
+    {
+        JSONString = JsonUtility.ToJson(scores);
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(JSONString);
+        writer.Close();
+    }
+
+    public bool CheckForNewHigh(int score)
+    {
+        if (scores.scores[0] <= score)
+        {
+            scores.scores[0] = score;
+            Array.Sort(scores.scores);
+            return true;
+        }
+        return false;
+    }
 }
+
+
 
 [System.Serializable]
 public class ToSaveStuff
