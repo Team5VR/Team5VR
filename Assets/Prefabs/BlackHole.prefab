@@ -34148,9 +34148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PointValue: 1
-  MultiplyPoints: 0
-  Combo: 1
-  GoalParticles: {fileID: 0}
+  m_isTutorialHoop: 0
   m_Type: 0
   m_Pivot: {fileID: 5390341590230322124}
   m_Radius: 3
