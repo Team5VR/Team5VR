@@ -92,6 +92,7 @@ public class ArcadeMenu : MonoBehaviour
     }
     public void QuitButton()
     {
+        FindObjectOfType<HighScores>().SaveScores();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -121,7 +122,8 @@ public class ArcadeMenu : MonoBehaviour
         m_mainPanel.SetActive(true);
         m_ArcadeButtons[0].Select();
         m_currentButton = 0;
-        m_mainActive = false;
+        m_mainActive = true;
+        m_change = true;
     }
 
 

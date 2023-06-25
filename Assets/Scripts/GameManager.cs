@@ -28,7 +28,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject m_grandstand;
     Transform m_resetSpawn;
+    [SerializeField]
     GameObject m_endScoreboard;
+    [SerializeField]
+    GameObject m_newHighScore;
 
     // Game Loop Area
     Transform m_gameSpawn;
@@ -66,8 +69,7 @@ public class GameManager : MonoBehaviour
         m_arcadeMenu = GameObject.Find("Arcade");
         m_tutorialObjects = GameObject.Find("TutorialObjects");
         m_startArea = GameObject.Find("StartArea");        
-        m_resetSpawn = GameObject.Find("ResetSpawn").transform;
-        m_endScoreboard = GameObject.Find("EndGameScoreboard");        
+        m_resetSpawn = GameObject.Find("ResetSpawn").transform;        
         m_gameSpawn = GameObject.Find("SpawnPosition").transform;
         m_player.GetComponent<TeleportationProvider>().enabled = false;
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = false;
@@ -95,6 +97,10 @@ public class GameManager : MonoBehaviour
         foreach (TextMeshProUGUI s in m_scoreboards)
         {
             s.text = m_currentScore.ToString();
+        }
+        foreach(BallPodium bp in FindObjectsOfType<BallPodium>()) 
+        {
+            bp.ResetBall();
         }
         m_timeRemaining = m_roundTimeAmount;
         StartCoroutine(UpdateTimer());
@@ -139,6 +145,14 @@ public class GameManager : MonoBehaviour
         m_arcadeMenu.SetActive(true);
         m_tutorialObjects.SetActive(false);
         m_endScoreboard.SetActive(true);
+        if(FindObjectOfType<HighScores>().CheckForNewHigh(m_currentScore))
+        {
+            m_newHighScore.SetActive(true);
+        }
+        else 
+        {
+            m_newHighScore.SetActive(false);
+        }
         foreach (TextMeshProUGUI t in m_scoreboards)
         {
             t.text = m_currentScore.ToString();
@@ -204,7 +218,8 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Credits");
         m_creditsPanel.SetActive(true);
         yield return new WaitForSeconds(m_creditsTime);
-        FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Default") + LayerMask.GetMask("Credits") + LayerMask.GetMask("UI");
+        FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Default") + 
+            LayerMask.GetMask("Credits") + LayerMask.GetMask("UI") + LayerMask.GetMask("TransparentFX");
         m_creditsPanel.SetActive(false);
     }
 }

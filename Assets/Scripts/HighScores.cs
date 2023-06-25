@@ -37,9 +37,7 @@ public class HighScores : MonoBehaviour
     public void SaveScores()
     {
         JSONString = JsonUtility.ToJson(scores);
-        StreamWriter writer = new StreamWriter(path, true);
-        writer.WriteLine(JSONString);
-        writer.Close();
+        File.WriteAllText(path, JSONString);
     }
 
     public bool CheckForNewHigh(int score)
