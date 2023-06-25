@@ -59,7 +59,7 @@ public class ScoringMethod : MonoBehaviour
             //m_goalParticles.Play();
 
             // Play Scoring Audio
-            //m_scoringAudioSource.PlayOneShot(m_scoringAudioClip);
+            m_scoringAudioSource.PlayOneShot(m_scoringAudioClip);
         }       
     }
 

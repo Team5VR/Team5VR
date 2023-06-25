@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pointValue: 1
   m_isTutorialHoop: 0
-  m_scoringAudioSource: {fileID: 0}
-  m_scoringAudioClip: {fileID: 0}
+  m_scoringAudioSource: {fileID: 3385054470401655029}
+  m_scoringAudioClip: {fileID: 8300000, guid: 4b1311147a752a5438f585c1d5c44fc0, type: 3}
   m_startColor: {r: 1, g: 0, b: 0, a: 0}
   m_goalColor: {r: 0, g: 1, b: 0, a: 0}
   m_goalTime: 2

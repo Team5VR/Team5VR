@@ -181,10 +181,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4009654627111048985, guid: 1950de503feef4d42b3cbae935a66272, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 639ddcf966b3ae448a6e96e0213d344c, type: 2}
     - target: {fileID: 919132149155446097, guid: 1950de503feef4d42b3cbae935a66272, type: 3}
       propertyPath: m_Name
       value: BallPodium
       objectReference: {fileID: 0}
+    - target: {fileID: 3566390031902043909, guid: 1950de503feef4d42b3cbae935a66272, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 639ddcf966b3ae448a6e96e0213d344c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1950de503feef4d42b3cbae935a66272, type: 3}
 --- !u!4 &7035345799864379413 stripped
