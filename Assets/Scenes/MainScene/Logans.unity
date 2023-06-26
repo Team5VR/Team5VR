@@ -10364,6 +10364,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Particle_Fog_D
       objectReference: {fileID: 0}
+    - target: {fileID: 5895030742414718863, guid: 15a965b7bebf95a43a771fd7a52e8761, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5895030742414718863, guid: 15a965b7bebf95a43a771fd7a52e8761, type: 3}
+      propertyPath: m_RenderAlignment
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8702645810210462522, guid: 15a965b7bebf95a43a771fd7a52e8761, type: 3}
       propertyPath: m_RootOrder
       value: 29
