@@ -16,8 +16,8 @@ RenderSettings:
   serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 1, g: 1, b: 1, a: 0.5686275}
-  m_FogMode: 1
-  m_FogDensity: 0.1
+  m_FogMode: 2
+  m_FogDensity: 0.001
   m_LinearFogStart: 0
   m_LinearFogEnd: 250
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -2359,6 +2359,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1184539286}
     m_Modifications:
     - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
+      propertyPath: m_pointValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
       propertyPath: m_goalParticles
       value: 
       objectReference: {fileID: 1625717518}
@@ -4584,6 +4588,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1184539286}
     m_Modifications:
     - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
+      propertyPath: m_pointValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
       propertyPath: m_goalParticles
       value: 
       objectReference: {fileID: 392582861}
@@ -4675,6 +4683,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 395746891}
     m_Modifications:
+    - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
+      propertyPath: m_pointValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
       propertyPath: m_goalParticles
       value: 
@@ -5429,6 +5441,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 395746891}
     m_Modifications:
+    - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
+      propertyPath: m_pointValue
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
       propertyPath: m_goalParticles
       value: 
@@ -7265,6 +7281,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 395746891}
     m_Modifications:
     - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
+      propertyPath: m_pointValue
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 290797275674279116, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
       propertyPath: m_goalParticles
       value: 
       objectReference: {fileID: 1803787934}
@@ -7748,11 +7768,6 @@ Material:
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_BuildTextureStacks: []
---- !u!1 &1642872019 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3846528481780549973, guid: 127329d9476caf7408dd6f85918f3b92, type: 3}
-  m_PrefabInstance: {fileID: 2096656184}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1693404479 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2306279175502148288, guid: 127329d9476caf7408dd6f85918f3b92, type: 3}
@@ -9016,6 +9031,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 1008
       objectReference: {fileID: 0}
+    - target: {fileID: 3617739138846514692, guid: b0b3f60b30ef6e64d897b0e4392647ff, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3617739138846514693, guid: b0b3f60b30ef6e64d897b0e4392647ff, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -9433,7 +9452,7 @@ MonoBehaviour:
   - {fileID: 45805758}
   - {fileID: 1693404479}
   - {fileID: 1562856825}
-  - {fileID: 1642872019}
+  - {fileID: 0}
   m_backButton: {fileID: 1905485397}
   m_nextButton: {fileID: 1376474722}
   m_multiplyerDistance: 12.5
@@ -9441,8 +9460,8 @@ MonoBehaviour:
   m_creditsTime: 10
   m_audioSource: {fileID: 2120698747}
   m_warningSource: {fileID: 2120698749}
-  m_menuMusic: {fileID: 8300000, guid: c3cc8642feea10e4b81545b2673367e0, type: 3}
-  m_inGameMusic: {fileID: 8300000, guid: 2ac53bb35262cc54d890f72555e08f31, type: 3}
+  m_menuMusic: {fileID: 8300000, guid: 38b1a46c67049154ca89214837252155, type: 3}
+  m_inGameMusic: {fileID: 8300000, guid: 9aa456c74a77c8b4c9fe7df2b3099e44, type: 3}
   m_lastTenSeconds: {fileID: 8300000, guid: cb678ce0984e0bb4194f7e757952bcf0, type: 3}
 --- !u!4 &2120698746
 Transform:
@@ -9471,7 +9490,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
