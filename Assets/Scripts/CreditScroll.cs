@@ -5,7 +5,8 @@ public class CreditScroll : MonoBehaviour
 {
     bool isScrolling;
     float rotation;
-    public float speed = 10.0f;
+    [SerializeField]
+    float m_creditsSpeed = 2.0f;
     Vector3 startPosition;
 
     private void Start()
@@ -30,7 +31,7 @@ public class CreditScroll : MonoBehaviour
     {
      if(isScrolling)
         {            
-            gameObject.transform.localPosition += Vector3.up * rotation * Time.deltaTime;
+            gameObject.transform.localPosition += Vector3.up * rotation * Time.deltaTime * m_creditsSpeed;
         }
     }
 }

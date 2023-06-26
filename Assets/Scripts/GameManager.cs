@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
     Button m_backButton;
     [SerializeField]
     Button m_nextButton;
+    [SerializeField]
+    Button m_playButton;
     int m_currentPage = 0;
 
     int m_currentScore = 0;
@@ -64,7 +66,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject m_creditsPanel;
     [SerializeField]
-    float m_creditsTime;
+    float m_creditsTime;    
 
     //Background Audio
     [SerializeField] AudioSource m_audioSource;
@@ -77,7 +79,7 @@ public class GameManager : MonoBehaviour
     {
         m_player = GameObject.Find("XROrigin");
         m_sicknessWarning = GameObject.Find("SicknessPanel");
-        m_surroundingsWarning = GameObject.Find("SplashImages");
+        m_surroundingsWarning = GameObject.Find("SurroundingsPanel");
         m_arcadeMenu = GameObject.Find("Arcade");
         m_tutorialObjects = GameObject.Find("TutorialObjects");
         m_startArea = GameObject.Find("StartArea");        
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
         m_sicknessWarning.SetActive(false);
         yield return new WaitForSeconds(m_surroundingsTime);
         m_surroundingsWarning.SetActive(false);        
+        m_arcadeMenu.SetActive(true);
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = true;
         m_player.GetComponent<TeleportationProvider>().enabled = true;
     }
@@ -127,8 +130,18 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CountdownTimer()
     {
-
-        yield return null;
+        m_countdown.gameObject.SetActive(true);
+        m_countdown.transform.localScale = Vector3.one * 3;
+        m_countdown.sprite = m_countdownSprites[0];
+        yield return new WaitForSeconds(1);
+        m_countdown.sprite = m_countdownSprites[1];
+        yield return new WaitForSeconds(1);
+        m_countdown.sprite = m_countdownSprites[2];
+        yield return new WaitForSeconds(1);
+        m_countdown.sprite = m_countdownSprites[3];
+        m_countdown.transform.localScale = Vector3.one * 5;
+        yield return new WaitForSeconds(1);
+        m_countdown.gameObject.SetActive(false);
     }
 
     public void UpdateScores(int add)
@@ -200,7 +213,9 @@ public class GameManager : MonoBehaviour
     {
         m_endScoreboard.SetActive(false);
         m_arcadeMenu.SetActive(false);
-        m_tutorialObjects.SetActive(true);        
+        m_tutorialObjects.SetActive(true);
+        m_nextButton.gameObject.SetActive(true);
+        m_playButton.gameObject.SetActive(false);
     }
     public void TutorialNext()
     {
@@ -219,7 +234,8 @@ public class GameManager : MonoBehaviour
         }
         else if (m_currentPage == m_tutorialPages.Count - 1)
         {
-            m_nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "Start Game";
+            m_nextButton.gameObject.SetActive(false);
+            m_playButton.gameObject.SetActive(true);
         }
         m_tutorialPages[m_currentPage - 1].gameObject.SetActive(false);
         m_tutorialPages[m_currentPage].gameObject.SetActive(true);
@@ -234,7 +250,8 @@ public class GameManager : MonoBehaviour
         }
         else if (m_currentPage == m_tutorialPages.Count - 1)
         {
-            m_nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "Next";
+            m_nextButton.gameObject.SetActive(true);
+            m_playButton.gameObject.SetActive(false);
         }
         m_tutorialPages[m_currentPage + 1].gameObject.SetActive(false);
         m_tutorialPages[m_currentPage].gameObject.SetActive(true);
