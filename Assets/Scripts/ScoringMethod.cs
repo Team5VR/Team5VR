@@ -13,7 +13,7 @@ public class ScoringMethod : MonoBehaviour
     public bool m_isTutorialHoop;
 
     //Particles
-    //public ParticleSystem m_goalParticles;
+    public ParticleSystem m_goalParticles;
 
     //Target Audio
     public AudioSource m_scoringAudioSource;
@@ -56,10 +56,12 @@ public class ScoringMethod : MonoBehaviour
             }
 
             // Play Particles
-            //m_goalParticles.Play();
+            m_goalParticles.Play();
+            Debug.Log("Particles YAY!");
 
             // Play Scoring Audio
             m_scoringAudioSource.PlayOneShot(m_scoringAudioClip);
+            Debug.Log("Sound YAY!");
         }       
     }
 
