@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
@@ -203,6 +204,12 @@ public class GameManager : MonoBehaviour
             t.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         m_player.transform.SetPositionAndRotation(m_resetSpawn.position, m_resetSpawn.rotation);
+
+        BallPodium[] bps = FindObjectsOfType<BallPodium>();
+        for(int i = 0; i < bps.Count(); i++)
+        {
+            bps[i].ResetBall();
+        }
 
         //Change music back to Menu Music
         m_audioSource.clip = m_menuMusic;
