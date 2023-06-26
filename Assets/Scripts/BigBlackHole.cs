@@ -27,7 +27,7 @@ public class BigBlackHole : MonoBehaviour
         deadBall.tag = "DeadBall";
         float distance = 2;        
         deadBall.GetComponent<Rigidbody>().velocity = deadBall.GetComponent<Rigidbody>().velocity * m_velocityPercentage;
-        while (distance > 0.01f)
+        while (distance > 0.01f && deadBall.tag == "Deadball")
         {
             Vector3 direction = m_centrePoint.position - deadBall.transform.position;
 

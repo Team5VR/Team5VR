@@ -8,16 +8,25 @@ public class ScoringMethod : MonoBehaviour
 {
     // Public Point Value For Each "Hoop"
     [Range(1,6)] 
-    public int PointValue = 1;
+    public int m_pointValue = 1;
 
     public bool m_isTutorialHoop;
 
     //Particles
-    //public ParticleSystem GoalParticles;
+    public ParticleSystem m_goalParticles;
 
     //Target Audio
-    public AudioSource scoringAudioSource;
-    public AudioClip scoringAudioClip;
+    public AudioSource m_scoringAudioSource;
+    public AudioClip m_scoringAudioClip;
+
+    Material m_material;
+    [SerializeField]
+    Color m_startColor;
+    [SerializeField]
+    Color m_goalColor; 
+    [SerializeField]
+    float m_goalTime;
+
 
     //Slight Pull Gravity
     public enum ForceType { Repulsion = -1, None = 0, Attraction = 1 }
@@ -28,6 +37,12 @@ public class ScoringMethod : MonoBehaviour
     public float m_Force;
     public LayerMask m_Layers;
 
+    private void Start()
+    {
+        m_material = GetComponentInChildren<MeshRenderer>().material;
+        m_material.SetColor("_EmissionColor", m_startColor);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
@@ -35,17 +50,28 @@ public class ScoringMethod : MonoBehaviour
             if (!m_isTutorialHoop)
             {
                 // Add Points to Game Manager
-                FindObjectOfType<GameManager>().UpdateScores(PointValue);                
+                FindObjectOfType<GameManager>().UpdateScores(m_pointValue);                
                 StartCoroutine(FindObjectOfType<BigBlackHole>().PullBall(other.gameObject));
+                StartCoroutine(ScoreColours());
             }
 
-            //Play Particles
-            // GoalParticles.Play();
+            // Play Particles
+            m_goalParticles.Play();
+            Debug.Log("Particles YAY!");
 
-            //Play Scoring Audio
-            //scoringAudioSource.PlayOneShot(scoringAudioClip);
+            // Play Scoring Audio
+            m_scoringAudioSource.PlayOneShot(m_scoringAudioClip);
+            Debug.Log("Sound YAY!");
         }       
     }
+
+    private IEnumerator ScoreColours()
+    {
+        m_material.SetColor("_EmissionColor", m_goalColor);
+        yield return new WaitForSeconds(m_goalTime);
+        m_material.SetColor("_EmissionColor", m_startColor);
+    }
+
     private void FixedUpdate()
     {
         Collider[] colliders = Physics.OverlapSphere(m_Pivot.position, m_Radius, m_Layers);

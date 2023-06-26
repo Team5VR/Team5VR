@@ -6,6 +6,13 @@ public class CreditScroll : MonoBehaviour
     bool isScrolling;
     float rotation;
     public float speed = 10.0f;
+    Vector3 startPosition;
+
+    private void Start()
+    {
+        startPosition = gameObject.transform.localPosition;
+    }
+
     void OnEnable()
     {
         Setup();
@@ -13,9 +20,9 @@ public class CreditScroll : MonoBehaviour
 
     void Setup()
     {
+        gameObject.transform.localPosition = startPosition;
         isScrolling = true;
         rotation = gameObject.GetComponent<Transform>().eulerAngles.x;
-        Debug.Log("Parent rotation:" + rotation);
     }
 
     // Update is called once per frame

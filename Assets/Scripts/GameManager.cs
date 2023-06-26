@@ -1,42 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class GameManager : MonoBehaviour
 {
     // Application Open
-    [SerializeField]
     GameObject m_player;
-    [SerializeField]
     GameObject m_sicknessWarning;
     [SerializeField]
-    float m_sicknessTime;
-    [SerializeField]
+    float m_sicknessTime;    
     GameObject m_surroundingsWarning;
     [SerializeField]
     float m_surroundingsTime;
 
-    // Menu Area
-    [SerializeField]
+    // Menu Area    
     GameObject m_arcadeMenu;
-    [SerializeField]
-    GameObject m_tutorialObjects;
-    [SerializeField]
+    GameObject m_tutorialObjects;    
     GameObject m_startArea;
     [SerializeField]
     GameObject m_grandstand;
-    [SerializeField]
     Transform m_resetSpawn;
     [SerializeField]
     GameObject m_endScoreboard;
+    [SerializeField]
+    GameObject m_newHighScore;
 
     // Game Loop Area
-    [SerializeField]
     Transform m_gameSpawn;
     [SerializeField]
     List<TextMeshProUGUI> m_scoreboards;
@@ -49,22 +46,44 @@ public class GameManager : MonoBehaviour
     // Tutorial Area
     [SerializeField]
     List<GameObject> m_tutorialPages;
-    int m_currentPage = 0;
     [SerializeField]
     Button m_backButton;
     [SerializeField]
     Button m_nextButton;
-
+    int m_currentPage = 0;
 
     int m_currentScore = 0;
     [SerializeField]
     float m_multiplyerDistance = 12.5f;
 
+    [SerializeField]
+    GameObject m_creditsPanel;
+    [SerializeField]
+    float m_creditsTime;
+
+    //Background Audio
+    [SerializeField] AudioSource m_audioSource;
+    [SerializeField] AudioSource m_warningSource;
+    [SerializeField] AudioClip m_menuMusic;
+    [SerializeField] AudioClip m_inGameMusic;
+    [SerializeField] AudioClip m_lastTenSeconds;
+
     private void Start()
     {
+        m_player = GameObject.Find("XROrigin");
+        m_sicknessWarning = GameObject.Find("SicknessPanel");
+        m_surroundingsWarning = GameObject.Find("SplashImages");
+        m_arcadeMenu = GameObject.Find("Arcade");
+        m_tutorialObjects = GameObject.Find("TutorialObjects");
+        m_startArea = GameObject.Find("StartArea");        
+        m_resetSpawn = GameObject.Find("ResetSpawn").transform;        
+        m_gameSpawn = GameObject.Find("SpawnPosition").transform;
         m_player.GetComponent<TeleportationProvider>().enabled = false;
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = false;
         StartCoroutine(Warnings());
+        //Background Music Menu
+        m_audioSource.clip = m_menuMusic;
+        m_audioSource.Play();
     }
 
     IEnumerator Warnings()
@@ -79,7 +98,9 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        FindObjectOfType<EventSystem>().enabled = false;
+        //Background Music - InGame
+        m_audioSource.clip = m_inGameMusic;
+        m_audioSource.Play();
         m_tutorialObjects.SetActive(false);
         m_arcadeMenu.SetActive(false);
         m_startArea.SetActive(false);
@@ -89,6 +110,10 @@ public class GameManager : MonoBehaviour
         foreach (TextMeshProUGUI s in m_scoreboards)
         {
             s.text = m_currentScore.ToString();
+        }
+        foreach(BallPodium bp in FindObjectsOfType<BallPodium>()) 
+        {
+            bp.ResetBall();
         }
         m_timeRemaining = m_roundTimeAmount;
         StartCoroutine(UpdateTimer());
@@ -133,6 +158,14 @@ public class GameManager : MonoBehaviour
         m_arcadeMenu.SetActive(true);
         m_tutorialObjects.SetActive(false);
         m_endScoreboard.SetActive(true);
+        if(FindObjectOfType<HighScores>().CheckForNewHigh(m_currentScore))
+        {
+            m_newHighScore.SetActive(true);
+        }
+        else 
+        {
+            m_newHighScore.SetActive(false);
+        }
         foreach (TextMeshProUGUI t in m_scoreboards)
         {
             t.text = m_currentScore.ToString();
@@ -146,6 +179,9 @@ public class GameManager : MonoBehaviour
         }
         m_player.transform.SetPositionAndRotation(m_resetSpawn.position, m_resetSpawn.rotation);
 
+        //Change music back to Menu Music
+        m_audioSource.clip = m_menuMusic;
+        m_audioSource.Play();
     }
 
     public void Tutorial()
@@ -191,13 +227,15 @@ public class GameManager : MonoBehaviour
         m_tutorialPages[m_currentPage + 1].gameObject.SetActive(false);
         m_tutorialPages[m_currentPage].gameObject.SetActive(true);
 
-    }
-    public void QuitGame()
+    } 
+
+    public IEnumerator RunCredits()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Credits");
+        m_creditsPanel.SetActive(true);
+        yield return new WaitForSeconds(m_creditsTime);
+        FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Default") + 
+            LayerMask.GetMask("Credits") + LayerMask.GetMask("UI") + LayerMask.GetMask("TransparentFX");
+        m_creditsPanel.SetActive(false);
     }
 }
