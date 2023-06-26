@@ -5,19 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
-  - 2xLine
   - DeadBall
+  - rightPusher
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Credits
   - Water
   - UI
-  - Ball
-  - DeadBall
-  - ForceField
-  - Credits
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
