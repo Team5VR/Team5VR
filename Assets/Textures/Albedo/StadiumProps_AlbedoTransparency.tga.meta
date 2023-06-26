@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Textures/Albedo/StadiumProps_AlbedoTransparency.tga.meta
 guid: 8c0c2fb329775dc4fa98e5b8733c9d7e
+========
+guid: 9803e799f11f0b542959277ff8c378d9
+>>>>>>>> origin/Lloyds:Assets/Textures/StadiumProps_Asteroid_AlbedoTransparency.tga.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
