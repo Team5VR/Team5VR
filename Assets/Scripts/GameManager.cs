@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour
     GameObject m_newHighScore;
 
     // Game Loop Area
+    [SerializeField]
+    Image m_countdown;
+    [SerializeField]
+    List<Sprite> m_countdownSprites;
+    [SerializeField]
     Transform m_gameSpawn;
     [SerializeField]
     List<TextMeshProUGUI> m_scoreboards;
@@ -117,6 +122,13 @@ public class GameManager : MonoBehaviour
         }
         m_timeRemaining = m_roundTimeAmount;
         StartCoroutine(UpdateTimer());
+        StartCoroutine(CountdownTimer());
+    }
+
+    IEnumerator CountdownTimer()
+    {
+
+        yield return null;
     }
 
     public void UpdateScores(int add)
