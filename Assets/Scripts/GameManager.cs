@@ -82,8 +82,8 @@ public class GameManager : MonoBehaviour
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = false;
         StartCoroutine(Warnings());
         //Background Music Menu
-        //m_audioSource.clip = m_menuMusic;
-        //m_audioSource.Play();
+        m_audioSource.clip = m_menuMusic;
+        m_audioSource.Play();
     }
 
     IEnumerator Warnings()
@@ -99,8 +99,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         //Background Music - InGame
-        //m_audioSource.clip = m_inGameMusic;
-        //m_audioSource.Play();
+        m_audioSource.clip = m_inGameMusic;
+        m_audioSource.Play();
         m_tutorialObjects.SetActive(false);
         m_arcadeMenu.SetActive(false);
         m_startArea.SetActive(false);
@@ -180,8 +180,8 @@ public class GameManager : MonoBehaviour
         m_player.transform.SetPositionAndRotation(m_resetSpawn.position, m_resetSpawn.rotation);
 
         //Change music back to Menu Music
-        //m_audioSource.clip = m_menuMusic;
-        //m_audioSource.Play();
+        m_audioSource.clip = m_menuMusic;
+        m_audioSource.Play();
     }
 
     public void Tutorial()
