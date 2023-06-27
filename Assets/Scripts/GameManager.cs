@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     GameObject m_player;
     GameObject m_sicknessWarning;
     [SerializeField]
-    float m_sicknessTime;    
+    float m_sicknessTime;
     GameObject m_surroundingsWarning;
     [SerializeField]
     float m_surroundingsTime;
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject m_arcadeMenu;
     [SerializeField]
-    GameObject m_tutorialObjects;    
+    GameObject m_tutorialObjects;
     GameObject m_startArea;
     [SerializeField]
     GameObject m_grandstand;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     GameObject m_creditsPanel;
     [SerializeField]
-    float m_creditsTime;    
+    float m_creditsTime;
 
     //Background Audio
     [SerializeField] AudioSource m_audioSource;
@@ -75,22 +75,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip m_inGameMusic;
     [SerializeField] AudioClip m_lastTenSeconds;
     [SerializeField] AudioSource m_cheerSource;
-    [SerializeField] List<AudioClip> m_cheers;
-    [SerializeField] float m_cheerTime;
+    [SerializeField] List<AudioClip> m_cheers;    
 
     private void Start()
     {
         m_player = GameObject.Find("XROrigin");
         m_sicknessWarning = GameObject.Find("SicknessPanel");
-        m_surroundingsWarning = GameObject.Find("SurroundingsPanel");        
-        m_startArea = GameObject.Find("StartArea");        
-        m_resetSpawn = GameObject.Find("ResetSpawn").transform;        
+        m_surroundingsWarning = GameObject.Find("SurroundingsPanel");
+        m_startArea = GameObject.Find("StartArea");
+        m_resetSpawn = GameObject.Find("ResetSpawn").transform;
         m_gameSpawn = GameObject.Find("SpawnPosition").transform;
         m_player.GetComponent<TeleportationProvider>().enabled = false;
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = false;
         StartCoroutine(Warnings());
         //Background Music Menu
-      //  m_audioSource.clip = m_menuMusic;
+        //  m_audioSource.clip = m_menuMusic;
         m_audioSource.Play();
     }
 
@@ -99,7 +98,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(m_sicknessTime);
         m_sicknessWarning.SetActive(false);
         yield return new WaitForSeconds(m_surroundingsTime);
-        m_surroundingsWarning.SetActive(false);        
+        m_surroundingsWarning.SetActive(false);
         m_arcadeMenu.SetActive(true);
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = true;
         m_player.GetComponent<TeleportationProvider>().enabled = true;
@@ -120,7 +119,7 @@ public class GameManager : MonoBehaviour
         {
             s.text = m_currentScore.ToString();
         }
-        foreach(BallPodium bp in FindObjectsOfType<BallPodium>()) 
+        foreach (BallPodium bp in FindObjectsOfType<BallPodium>())
         {
             bp.ResetBall();
         }
@@ -142,23 +141,11 @@ public class GameManager : MonoBehaviour
         m_countdown.sprite = m_countdownSprites[3];
         yield return new WaitForSeconds(1);
         m_countdown.gameObject.SetActive(false);
-        while (m_timeRemaining >= 0)
-        {
-            if(m_timeRemaining <= 6)
-            {
-                m_warningSource.clip = m_lastTenSeconds;
-                m_warningSource.Play();
-            }
-            else
-            {
-                m_cheerSource.clip = m_cheers[Random.Range(0, m_cheers.Count)];
-            }
-            yield return new WaitForSeconds(m_cheerTime);
-        }
     }
 
     public void UpdateScores(int add)
     {
+        m_cheerSource.clip = m_cheers[Random.Range(0, m_cheers.Count)];
         if (Vector3.Distance(Vector3.zero, FindObjectOfType<XROrigin>().gameObject.transform.position) > m_multiplyerDistance)
         {
             m_currentScore += (add * 2);
@@ -171,10 +158,11 @@ public class GameManager : MonoBehaviour
         {
             s.text = m_currentScore.ToString();
         }
-    } 
+    }
 
     private IEnumerator UpdateTimer()
     {
+        bool warning = true;
         while (m_timeRemaining >= 0)
         {
             foreach (TextMeshProUGUI t in m_timers)
@@ -184,6 +172,15 @@ public class GameManager : MonoBehaviour
                 t.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
             m_timeRemaining -= Time.deltaTime;
+            if (m_timeRemaining <= 10)
+            {
+                if (warning)
+                {
+                    m_warningSource.clip = m_lastTenSeconds;
+                    m_warningSource.Play();
+                    warning = false;
+                }
+            }
             yield return null;
         }
         RoundEnd();
@@ -196,11 +193,11 @@ public class GameManager : MonoBehaviour
         m_arcadeMenu.SetActive(true);
         m_tutorialObjects.SetActive(false);
         m_endScoreboard.SetActive(true);
-        if(FindObjectOfType<HighScores>().CheckForNewHigh(m_currentScore))
+        if (FindObjectOfType<HighScores>().CheckForNewHigh(m_currentScore))
         {
             m_newHighScore.SetActive(true);
         }
-        else 
+        else
         {
             m_newHighScore.SetActive(false);
         }
@@ -218,13 +215,13 @@ public class GameManager : MonoBehaviour
         m_player.transform.SetPositionAndRotation(m_resetSpawn.position, m_resetSpawn.rotation);
 
         BallPodium[] bps = FindObjectsOfType<BallPodium>();
-        for(int i = 0; i < bps.Count(); i++)
+        for (int i = 0; i < bps.Count(); i++)
         {
             bps[i].ResetBall();
         }
 
         //Change music back to Menu Music
-      //  m_audioSource.clip = m_menuMusic;
+        //  m_audioSource.clip = m_menuMusic;
         m_audioSource.Play();
     }
 
@@ -238,10 +235,10 @@ public class GameManager : MonoBehaviour
     }
     public void TutorialNext()
     {
-        m_currentPage++;        
+        m_currentPage++;
         if (m_currentPage == m_tutorialPages.Count)
-        {            
-            m_tutorialPages[m_currentPage-1].gameObject.SetActive(false);
+        {
+            m_tutorialPages[m_currentPage - 1].gameObject.SetActive(false);
             m_tutorialPages[0].gameObject.SetActive(true);
             m_currentPage = 0;
             StartGame();
@@ -275,14 +272,14 @@ public class GameManager : MonoBehaviour
         m_tutorialPages[m_currentPage + 1].gameObject.SetActive(false);
         m_tutorialPages[m_currentPage].gameObject.SetActive(true);
 
-    } 
+    }
 
     public IEnumerator RunCredits()
     {
         FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Credits");
         m_creditsPanel.SetActive(true);
         yield return new WaitForSeconds(m_creditsTime);
-        FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Default") + 
+        FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Default") +
             LayerMask.GetMask("Credits") + LayerMask.GetMask("UI") + LayerMask.GetMask("TransparentFX");
         m_creditsPanel.SetActive(false);
     }
