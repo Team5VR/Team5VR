@@ -23,7 +23,9 @@ public class GameManager : MonoBehaviour
     float m_surroundingsTime;
 
     // Menu Area    
+    [SerializeField]
     GameObject m_arcadeMenu;
+    [SerializeField]
     GameObject m_tutorialObjects;    
     GameObject m_startArea;
     [SerializeField]
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
     //Background Audio
     [SerializeField] AudioSource m_audioSource;
     [SerializeField] AudioSource m_warningSource;
-    [SerializeField] AudioClip m_menuMusic;
+    //[SerializeField] AudioClip m_menuMusic;
     [SerializeField] AudioClip m_inGameMusic;
     [SerializeField] AudioClip m_lastTenSeconds;
 
@@ -80,9 +82,7 @@ public class GameManager : MonoBehaviour
     {
         m_player = GameObject.Find("XROrigin");
         m_sicknessWarning = GameObject.Find("SicknessPanel");
-        m_surroundingsWarning = GameObject.Find("SurroundingsPanel");
-        m_arcadeMenu = GameObject.Find("Arcade");
-        m_tutorialObjects = GameObject.Find("TutorialObjects");
+        m_surroundingsWarning = GameObject.Find("SurroundingsPanel");        
         m_startArea = GameObject.Find("StartArea");        
         m_resetSpawn = GameObject.Find("ResetSpawn").transform;        
         m_gameSpawn = GameObject.Find("SpawnPosition").transform;
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = false;
         StartCoroutine(Warnings());
         //Background Music Menu
-        m_audioSource.clip = m_menuMusic;
+      //  m_audioSource.clip = m_menuMusic;
         m_audioSource.Play();
     }
 
@@ -212,7 +212,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Change music back to Menu Music
-        m_audioSource.clip = m_menuMusic;
+      //  m_audioSource.clip = m_menuMusic;
         m_audioSource.Play();
     }
 
