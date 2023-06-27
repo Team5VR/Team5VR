@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -49,6 +45,7 @@ public class GameManager : MonoBehaviour
     List<TextMeshProUGUI> m_timers;
     [SerializeField]
     float m_roundTimeAmount;
+
     float m_timeRemaining;
 
     // Tutorial Area
@@ -77,6 +74,9 @@ public class GameManager : MonoBehaviour
     //[SerializeField] AudioClip m_menuMusic;
     [SerializeField] AudioClip m_inGameMusic;
     [SerializeField] AudioClip m_lastTenSeconds;
+    [SerializeField] AudioSource m_cheerSource;
+    [SerializeField] List<AudioClip> m_cheers;
+    [SerializeField] float m_cheerTime;
 
     private void Start()
     {
@@ -140,9 +140,21 @@ public class GameManager : MonoBehaviour
         m_countdown.sprite = m_countdownSprites[2];
         yield return new WaitForSeconds(1);
         m_countdown.sprite = m_countdownSprites[3];
-        m_countdown.transform.localScale = Vector3.one * 5;
         yield return new WaitForSeconds(1);
         m_countdown.gameObject.SetActive(false);
+        while (m_timeRemaining >= 0)
+        {
+            if(m_timeRemaining <= 6)
+            {
+                m_warningSource.clip = m_lastTenSeconds;
+                m_warningSource.Play();
+            }
+            else
+            {
+                m_cheerSource.clip = m_cheers[Random.Range(0, m_cheers.Count)];
+            }
+            yield return new WaitForSeconds(m_cheerTime);
+        }
     }
 
     public void UpdateScores(int add)
@@ -159,7 +171,7 @@ public class GameManager : MonoBehaviour
         {
             s.text = m_currentScore.ToString();
         }
-    }
+    } 
 
     private IEnumerator UpdateTimer()
     {

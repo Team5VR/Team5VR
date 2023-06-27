@@ -808,7 +808,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Name
       value: Speaker (3)
@@ -869,7 +869,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Name
       value: Speaker (4)
@@ -930,7 +930,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Name
       value: Speaker
@@ -1007,7 +1007,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d42fbe6a02f710947a67ad9eec412aa5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: d42fbe6a02f710947a67ad9eec412aa5, type: 3}
       propertyPath: m_Name
       value: Scoreboard
@@ -1077,7 +1077,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Name
       value: Speaker (5)
@@ -1138,7 +1138,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a2808fccfc293d848b01497d7918fdaa, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: a2808fccfc293d848b01497d7918fdaa, type: 3}
       propertyPath: m_Name
       value: Booster (1)
@@ -1199,7 +1199,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Name
       value: Speaker (1)
@@ -1260,7 +1260,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a2808fccfc293d848b01497d7918fdaa, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: a2808fccfc293d848b01497d7918fdaa, type: 3}
       propertyPath: m_Name
       value: Booster
@@ -1321,7 +1321,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c3d0773d86a946040b7912afe11479f6, type: 2}
+      objectReference: {fileID: 2100000, guid: f0a0e952f1977704ba5724ed03ef74db, type: 2}
     - target: {fileID: 919132149155446097, guid: 55b381ffa445496458c151005a0f3812, type: 3}
       propertyPath: m_Name
       value: Speaker (2)
