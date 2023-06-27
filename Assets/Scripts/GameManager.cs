@@ -10,10 +10,13 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class GameManager : MonoBehaviour
 {
     // Application Open
+    [SerializeField]
     GameObject m_player;
+    [SerializeField]
     GameObject m_sicknessWarning;
     [SerializeField]
     float m_sicknessTime;
+    [SerializeField]
     GameObject m_surroundingsWarning;
     [SerializeField]
     float m_surroundingsTime;
@@ -23,9 +26,11 @@ public class GameManager : MonoBehaviour
     GameObject m_arcadeMenu;
     [SerializeField]
     GameObject m_tutorialObjects;
+    [SerializeField]
     GameObject m_startArea;
     [SerializeField]
     GameObject m_grandstand;
+    [SerializeField]
     Transform m_resetSpawn;
     [SerializeField]
     GameObject m_endScoreboard;
@@ -75,16 +80,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip m_inGameMusic;
     [SerializeField] AudioClip m_lastTenSeconds;
     [SerializeField] AudioSource m_cheerSource;
-    [SerializeField] List<AudioClip> m_cheers;    
+    [SerializeField] List<AudioClip> m_cheers;
 
     private void Start()
-    {
-        m_player = GameObject.Find("XROrigin");
-        m_sicknessWarning = GameObject.Find("SicknessPanel");
-        m_surroundingsWarning = GameObject.Find("SurroundingsPanel");
-        m_startArea = GameObject.Find("StartArea");
-        m_resetSpawn = GameObject.Find("ResetSpawn").transform;
-        m_gameSpawn = GameObject.Find("SpawnPosition").transform;
+    {         
         m_player.GetComponent<TeleportationProvider>().enabled = false;
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = false;
         StartCoroutine(Warnings());
@@ -130,8 +129,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CountdownTimer()
     {
-        m_countdown.gameObject.SetActive(true);
-        m_countdown.transform.localScale = Vector3.one * 3;
+        m_countdown.gameObject.SetActive(true);        
         m_countdown.sprite = m_countdownSprites[0];
         yield return new WaitForSeconds(1);
         m_countdown.sprite = m_countdownSprites[1];
@@ -279,8 +277,7 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Credits");
         m_creditsPanel.SetActive(true);
         yield return new WaitForSeconds(m_creditsTime);
-        FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Default") +
-            LayerMask.GetMask("Credits") + LayerMask.GetMask("UI") + LayerMask.GetMask("TransparentFX");
+        FindObjectOfType<Camera>().cullingMask = ~0;
         m_creditsPanel.SetActive(false);
     }
 }

@@ -6035,6 +6035,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7155707253483274588, guid: 28f5ddb1b81baef4ba7fdf6625f25e16, type: 3}
   m_PrefabInstance: {fileID: 708657901403989041}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &942028996 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2312579770886768718, guid: b00f245b06563b841840d58ec3b70f4d, type: 3}
+  m_PrefabInstance: {fileID: 8359602057287834526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &964029935
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7547,6 +7552,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 97.906006, y: -439.682, z: -49.411987}
+--- !u!1 &1257001958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5597467478436373806, guid: b00f245b06563b841840d58ec3b70f4d, type: 3}
+  m_PrefabInstance: {fileID: 8359602057287834526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1268048826
 Mesh:
   m_ObjectHideFlags: 0
@@ -10407,6 +10417,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1779277964 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8434499931703820210, guid: b00f245b06563b841840d58ec3b70f4d, type: 3}
+  m_PrefabInstance: {fileID: 8359602057287834526}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &1803787934 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 1853112480427346355, guid: 1092f3f76db5dea4b94c13343eea471c, type: 3}
@@ -11994,11 +12009,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ec1bb0bd9fca447bd211dbb3792445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_player: {fileID: 942028996}
+  m_sicknessWarning: {fileID: 1257001958}
   m_sicknessTime: 5
+  m_surroundingsWarning: {fileID: 1779277964}
   m_surroundingsTime: 5
   m_arcadeMenu: {fileID: 276025619}
   m_tutorialObjects: {fileID: 1722514385}
+  m_startArea: {fileID: 493996346}
   m_grandstand: {fileID: 1442346387}
+  m_resetSpawn: {fileID: 734367665}
   m_endScoreboard: {fileID: 1525532666}
   m_newHighScore: {fileID: 1525532665}
   m_countdown: {fileID: 8359602057287834528}

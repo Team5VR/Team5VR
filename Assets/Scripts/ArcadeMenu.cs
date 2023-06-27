@@ -1,10 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
-using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR.Content.Interaction;
-
 public class ArcadeMenu : MonoBehaviour
 {
     [SerializeField]
