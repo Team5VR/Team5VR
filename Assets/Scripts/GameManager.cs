@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     //Background Audio
     [SerializeField] AudioSource m_audioSource;
     [SerializeField] AudioSource m_warningSource;
-    //[SerializeField] AudioClip m_menuMusic;
+    [SerializeField] AudioClip m_menuMusic;
     [SerializeField] AudioClip m_inGameMusic;
     [SerializeField] AudioClip m_lastTenSeconds;
     [SerializeField] AudioSource m_cheerSource;
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         m_player.GetComponent<ActionBasedSnapTurnProvider>().enabled = false;
         StartCoroutine(Warnings());
         //Background Music Menu
-        //  m_audioSource.clip = m_menuMusic;
+        m_audioSource.clip = m_menuMusic;
         m_audioSource.Play();
     }
 
@@ -221,7 +221,7 @@ public class GameManager : MonoBehaviour
         }
 
         //Change music back to Menu Music
-        //  m_audioSource.clip = m_menuMusic;
+        m_audioSource.clip = m_menuMusic;
         m_audioSource.Play();
     }
 
