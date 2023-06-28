@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
 
     // Game Loop Area
     [SerializeField]
+    GameObject m_handMenu;
+    [SerializeField]
     Image m_countdown;
     [SerializeField]
     List<Sprite> m_countdownSprites;
@@ -105,6 +107,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        m_handMenu.SetActive(true);
         //Background Music - InGame
         m_audioSource.clip = m_inGameMusic;
         m_audioSource.Play();
@@ -217,6 +220,7 @@ public class GameManager : MonoBehaviour
         {
             bps[i].ResetBall();
         }
+        m_handMenu.SetActive(false);
 
         //Change music back to Menu Music
         m_audioSource.clip = m_menuMusic;
