@@ -274,10 +274,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator RunCredits()
     {
-        FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Credits");
-        m_creditsPanel.SetActive(true);
-        yield return new WaitForSeconds(m_creditsTime);
-        FindObjectOfType<Camera>().cullingMask = ~0;
-        m_creditsPanel.SetActive(false);
+          FindObjectOfType<Camera>().cullingMask = LayerMask.GetMask("Credits");
+          m_creditsPanel.SetActive(true);
+          yield return new WaitForSeconds(m_creditsTime);
+          FindObjectOfType<Camera>().cullingMask = ~0;
+          m_creditsPanel.SetActive(false);
     }
 }
